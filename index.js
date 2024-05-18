@@ -13,7 +13,7 @@ import mealRoutes from "./routes/mealRoutes.js"
 const app = express();
 
 //CORS middleware library 
-const allowedOrigins = ["http://localhost:5173"]
+const allowedOrigins = ["http://localhost:5175", "https://remember-what-you-cooked.vercel.app" ]
 //EXPRESS has use method
 app.use(cors(
     {
