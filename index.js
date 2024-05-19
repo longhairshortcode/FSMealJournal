@@ -13,7 +13,7 @@ import mealRoutes from "./routes/mealRoutes.js"
 const app = express();
 
 //CORS middleware library 
-const allowedOrigins = ["http://localhost:5175", "https://remember-what-you-cooked.vercel.app" ]
+const allowedOrigins = ["http://localhost:5176", "https://remember-what-you-cooked.vercel.app" ]
 //EXPRESS has use method
 app.use(cors(
     {
@@ -52,7 +52,7 @@ app.use("/meal", mealRoutes)
 
 
 
-const PORT = process.env.PORT || 2121
+const PORT = process.env.PORT || 3000
 
 const MONGODB_STRING = process.env.MONGODB_STRING
 const connectDB = async () => { //start asynchronous function 
