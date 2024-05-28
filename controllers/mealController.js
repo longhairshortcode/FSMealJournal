@@ -13,7 +13,16 @@ export default {
     //         console.log(error)
     //     }
     // },
-
+    getAllImage: async (req, res) => {
+        try{
+            const allImage = await mealSchema.find()
+            if (allImage){
+                res.status(201).json(allImage); 
+            }
+        }catch(error){
+            console.log(error)
+        }
+    },
     createMeal: async (req, res) => {
         console.log(req.body)
         console.log(req.file)
@@ -33,7 +42,7 @@ export default {
                 day: day,
 
             })
-            // console.log(newMeal)
+            console.log(newMeal)
             res.status(201).json(newMeal);
         }catch(error){
             console.log(error)

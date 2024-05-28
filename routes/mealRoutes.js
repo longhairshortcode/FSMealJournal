@@ -28,8 +28,8 @@ const upload = multer({ storage: storage });
 router.post("/create-meal", upload.single("file"), mealController.createMeal);
 // router.post("/add-image", upload.single("image"), mealController.addImage);
 
-//http://localhost:2121/meal/get-all/:id
-// router.get("/get-all/:id", mealController.getAll)
+//http://localhost:2121/meal/get-all-image/
+ router.get("/get-all-image", mealController.getAllImage)
 
 //http://localhost:2121/meal/create-meal
 // router.post("/create-meal", mealController.createMeal)
