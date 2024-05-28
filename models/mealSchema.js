@@ -2,7 +2,11 @@ import mongoose from "mongoose";
 
 const mealSchema = new mongoose.Schema({
     image: {
-        type: Array,
+        type: String,
+    },
+
+    category: {
+        type: String,
         required: true,
     },
 
@@ -18,7 +22,13 @@ const mealSchema = new mongoose.Schema({
     userID: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "users",
-       }
+       },
+    
+    day: {
+        type: String,
+        required: true,
+    }
+    
 
 })
 

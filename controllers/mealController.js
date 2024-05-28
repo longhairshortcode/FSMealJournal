@@ -15,24 +15,25 @@ export default {
     // },
 
     createMeal: async (req, res) => {
+        console.log(req.body)
+        console.log(req.file)
         try{
-            const {category, title, notes, userID} = req.body
-            if ( !title || !userID || !category || !req.file) {
+            const {category, title, notes, userID, day} = req.body
+            const {filename} = req.file
+            if ( !title || !userID || !category || !req.file || !day) {
                 return res.status(400).json({ message: "Missing required fields" });
             }
 
-             // Upload image to Cloudinary
-            const result = await cloudinary.uploader.upload(req.file.path);
-
             const  newMeal= await mealSchema.create({
-                image: result.secure_url, // Use the secure URL provided by Cloudinary
+                image: filename, 
                 category: category,
                 title: title,
                 notes: notes,
                 userID: userID,
+                day: day,
 
             })
-            console.log(newMeal)
+            // console.log(newMeal)
             res.status(201).json(newMeal);
         }catch(error){
             console.log(error)

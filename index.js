@@ -3,7 +3,9 @@ import express from "express";
 import cors from "cors";
 import mongoose from "mongoose"
 import dotenv from "dotenv"
-import { v2 as cloudinary } from 'cloudinary';
+import path from "path"
+import bodyParser from "body-parser";
+// import { v2 as cloudinary } from 'cloudinary';
 
 dotenv.config(); 
 //import routes
@@ -13,7 +15,7 @@ import mealRoutes from "./routes/mealRoutes.js"
 const app = express();
 
 //CORS middleware library 
-const allowedOrigins = ["http://localhost:5176", "https://remember-what-you-cooked.vercel.app" ]
+const allowedOrigins = ["http://localhost:5176", "http://localhost:5173", "https://remember-what-you-cooked.vercel.app" ]
 //EXPRESS has use method
 app.use(cors(
     {
@@ -33,14 +35,15 @@ app.use(cors(
 
 //json middleware
 app.use(express.json())
-
+app.use(bodyParser.urlencoded({extended: false}))
+app.use(express.static("public"))
 
 // Configure Cloudinary using environment variables
-cloudinary.config({
-    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-    api_key: process.env.CLOUDINARY_API_KEY,
-    api_secret: process.env.CLOUDINARY_API_SECRET
-});
+// cloudinary.config({
+//     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+//     api_key: process.env.CLOUDINARY_API_KEY,
+//     api_secret: process.env.CLOUDINARY_API_SECRET
+// });
 
 
 //routes entry point & middleware (only for routes not controllers)
